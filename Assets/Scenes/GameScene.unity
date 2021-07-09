@@ -395,7 +395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -113.94995, y: -178}
+  m_AnchoredPosition: {x: -100, y: -174}
   m_SizeDelta: {x: 147.34973, y: 162.8175}
   m_Pivot: {x: 0.5, y: 0.50000006}
 --- !u!114 &1006465199
@@ -674,6 +674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   highScore: 0
+  currentSprite: 0
   time: 0
   scoreText: {fileID: 1405235530}
   highScoreText: {fileID: 699705143}

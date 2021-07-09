@@ -8,6 +8,7 @@ public class MenuBehaviour : MonoBehaviour
     public static MenuBehaviour menuBehaviour;
     public static float addTime;
     public static int currentSprite;
+    public static int currentSoundStatus;
 
     void Start()
     {

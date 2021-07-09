@@ -28,11 +28,6 @@ public class GameBehaviour : MonoBehaviour
         {
             Debug.Log("Awake called!");
             backgrounds = Resources.LoadAll<Sprite>(resourceName);
-
-            foreach (Sprite sprite in backgrounds)
-            {
-                Debug.Log(sprite.name);
-            }
         }
     }
 

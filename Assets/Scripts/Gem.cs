@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gem : MonoBehaviour
 {
     public AudioClip selectSound, swapSound, clearSound;
+    private AudioSource audioSource;
 
     private static Color SELECTED_COLOR = new Color(.5f, .5f, .5f, 1.0f);
     private static Color UNSELECTED_COLOR = Color.white;
@@ -23,14 +24,37 @@ public class Gem : MonoBehaviour
         isSelected = false;
     }
 
-    private void callPlayOneShot(AudioClip audioClip)
+    private void PlayMusicClip(AudioClip audioClip)
     {
-        AudioSource audio = GetComponent<AudioSource>();
-        if (audio == null)
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
         {
-            audio = gameObject.AddComponent<AudioSource>();
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
-        audio.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);
+    }
+
+    private void StopMusic()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    private void PlayMusicOrDoNot(AudioClip audioClip)
+    {
+        switch (MenuBehaviour.currentSoundStatus)
+        {
+            case 0:
+                PlayMusicClip(audioClip);
+                break;
+            case 1:
+                StopMusic();        
+                break;
+        }
     }
 
     private void Select()
@@ -38,7 +62,7 @@ public class Gem : MonoBehaviour
         isSelected = true;
         spriteRenderer.color = SELECTED_COLOR;
         previousSelected = gameObject.GetComponent<Gem>();
-        callPlayOneShot(selectSound);
+        PlayMusicOrDoNot(selectSound);
     }
 
     private void Unselect()
@@ -107,7 +131,7 @@ public class Gem : MonoBehaviour
         Sprite tempSprite = previousSelected.spriteRenderer.sprite;
         previousSelected.spriteRenderer.sprite = spriteRenderer.sprite;
         spriteRenderer.sprite = tempSprite;
-        callPlayOneShot(swapSound);
+        PlayMusicOrDoNot(swapSound);
     }
 
     private List<GameObject> FindHorizontalMatches()
@@ -184,7 +208,7 @@ public class Gem : MonoBehaviour
         {
             GridManager.instance.DropGems();
             GameBehaviour.gameBehaviour.IncreaseScore();
-            callPlayOneShot(clearSound);
+            PlayMusicOrDoNot(clearSound);
         }
     }
 }
