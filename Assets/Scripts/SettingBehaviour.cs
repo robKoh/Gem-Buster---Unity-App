@@ -78,7 +78,7 @@ public class SettingBehaviour : MonoBehaviour
         switch (MenuBehaviour.currentSoundStatus)
         {
             case 0:
-                toggleImage4.isOn = true;
+                toggleSoundOn.isOn = true;
                 ChangeColorOfImageToGrey(imageSoundOff);
                 ChangeColorOfImageToWhite(imageSoundOn);
                 break;
@@ -213,6 +213,11 @@ public class SettingBehaviour : MonoBehaviour
                 ChangeColorOfImageToWhite(image3);
                 ChangeColorOfImageToWhite(image4);
                 break;
+            case 1:
+                ChangeColorOfImageToWhite(image1);
+                ChangeColorOfImageToWhite(image2);
+                ChangeColorOfImageToWhite(image3);
+                break;
             case 2:
                 ChangeColorOfImageToWhite(image1);
                 ChangeColorOfImageToWhite(image3);
@@ -222,11 +227,6 @@ public class SettingBehaviour : MonoBehaviour
                 ChangeColorOfImageToWhite(image1);
                 ChangeColorOfImageToWhite(image2);
                 ChangeColorOfImageToWhite(image4);
-                break;
-            case 1:
-                ChangeColorOfImageToWhite(image1);
-                ChangeColorOfImageToWhite(image2);
-                ChangeColorOfImageToWhite(image3);
                 break;
         }
     }
