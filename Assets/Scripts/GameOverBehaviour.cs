@@ -8,6 +8,7 @@ public class GameOverBehaviour : MonoBehaviour
     public static GameOverBehaviour gameOverBehaviour;
 
     public Text gameOverScore, gameOverHighScore, gameOverDifficultyLevel;
+    
     void Start()
     {
         Debug.Log("Start() in GameOverBehaviour");
